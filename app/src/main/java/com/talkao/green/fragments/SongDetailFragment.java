@@ -68,7 +68,6 @@ public class SongDetailFragment extends Fragment implements MediaPlayer.OnPrepar
      * @param position Position in array of songs.
      * @return A new instance of fragment SongDetailFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static SongDetailFragment newInstance(String albumName, String albumURL, String artistName, String songName, String songURL, String cacheName, int position) {
         SongDetailFragment fragment = new SongDetailFragment();
         Bundle args = new Bundle();
@@ -216,7 +215,6 @@ public class SongDetailFragment extends Fragment implements MediaPlayer.OnPrepar
         activity.setVisibility(View.VISIBLE);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
@@ -256,7 +254,6 @@ public class SongDetailFragment extends Fragment implements MediaPlayer.OnPrepar
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
 }

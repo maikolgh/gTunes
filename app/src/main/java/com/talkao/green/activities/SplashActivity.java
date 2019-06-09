@@ -1,4 +1,4 @@
-package com.talkao.green;
+package com.talkao.green.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,15 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.talkao.green.lists.SongsAdapter;
+import com.talkao.green.R;
 import com.talkao.green.models.Search;
 import com.talkao.green.models.Session;
-import com.talkao.green.models.Song;
 import com.talkao.green.services.APIService;
 import com.talkao.green.utils.ApiUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,8 +41,6 @@ public class SplashActivity extends AppCompatActivity {
             Intent intent = new Intent(this, gTunesActivity.class);
             startActivity(intent);
             ActivityCompat.finishAffinity(this);
-
-            startActivity(intent);
         }else{
             getSearch(lastSearch);
         }
@@ -59,6 +53,7 @@ public class SplashActivity extends AppCompatActivity {
                 session.setSongs(response.body().getResults());
                 activity.setVisibility(View.GONE);
                 Intent intent = new Intent(getApplicationContext(), gTunesActivity.class);
+                intent.putExtra("search", search);
                 startActivity(intent);
                 ActivityCompat.finishAffinity(SplashActivity.this);
             }

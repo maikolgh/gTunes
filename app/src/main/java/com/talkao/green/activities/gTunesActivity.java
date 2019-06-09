@@ -1,4 +1,4 @@
-package com.talkao.green;
+package com.talkao.green.activities;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
 
+import com.talkao.green.R;
 import com.talkao.green.fragments.SongDetailFragment;
 import com.talkao.green.lists.SongsAdapter;
 import com.talkao.green.models.Search;
@@ -83,9 +84,12 @@ public class gTunesActivity extends AppCompatActivity implements SongDetailFragm
             }
         }
 
-        SharedPreferences preferences = getBaseContext().getSharedPreferences("gTunesPreferences", Context.MODE_PRIVATE);
-        svSongs.setQuery(preferences.getString("search", ""),false);
-        SharedPreferences.Editor editor = preferences.edit();
+        if(getIntent().getStringExtra("search") != null) {
+            if (!getIntent().getStringExtra("search").equalsIgnoreCase("")){
+                svSongs.setQuery(getIntent().getStringExtra("search"),false);
+            }
+        }
+        SharedPreferences.Editor editor = getBaseContext().getSharedPreferences("gTunesPreferences", Context.MODE_PRIVATE).edit();
         editor.putString("search", "");
         editor.apply();
     }
