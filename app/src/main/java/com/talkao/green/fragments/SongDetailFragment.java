@@ -117,7 +117,7 @@ public class SongDetailFragment extends Fragment implements MediaPlayer.OnPrepar
         ibNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (session.getSongs().size() > mCurrentPosition){
+                if (session.getSongs().size()-1 > mCurrentPosition){
                     mCurrentPosition += 1;
                     Song song = session.getSongs().get(mCurrentPosition);
 
